@@ -1,0 +1,48 @@
+
+$secondary: #cccccc;
+$warning: #e8c400;
+$light: #faf9f4;
+@import "./lib/bootstrap/dist/scss/bootstrap";
+.main {
+    border:none;
+}
+
+.w-12 {
+    width: 12rem;
+}
+
+.border-rad-75 {
+    border-radius:0.75rem;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 8px -1px rgba(0,0,0,0.75);
+}
+
+.synopsis {
+    text-overflow: ellipsis;
+    max-width: 200ch;
+}
+
+.border-1{
+    border-width: 0.15rem;
+}
+
+a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.page-item {
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: default;
+}
+
+.pre-wrap{
+    white-space: pre-wrap;
+}

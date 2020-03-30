@@ -1,0 +1,74 @@
+<div class="container border shadow h-100">
+  <div class="row p-3">
+    <div class="col-12 text-center">
+      <h1 class="justify-content-center text-warning">Top books of all time</h1>
+    </div>
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search for title or synopsis" ng-keypress="$ctrl.searchEnter($event)" ng-model="$ctrl.filter.searchField">
+    <div class="input-group-append">
+      <button class="btn btn-warning text-white font-weight-bold" type="button" ng-click="$ctrl.search()">Search</button>
+    </div>
+  </div>
+
+  <nav>
+    <ul class="pagination flex-wrap" ng-if="$ctrl.pageArray && $ctrl.pageArray.length">
+      <li class="page-item" ng-class="{ 'disabled': $ctrl.filter.skip === 0 }" ng-click="$ctrl.changePage($ctrl.filter.skip-1)">
+        <a class="page-link">Previous</a>
+      </li>
+      <li class="page-item" ng-repeat="index in $ctrl.pageArray" ng-class="{ 'active': $ctrl.filter.skip === $index }" >
+        <a class="page-link" ng-click="$ctrl.changePage($index)">{{index}}
+          <span class="sr-only" ng-if="$ctrl.filter.skip === $index">(current)</span>
+        </a>
+      </li>
+      <li class="page-item" ng-class="{'disabled': $ctrl.filter.skip+1 === $ctrl.pageArray.length}"
+      ng-click="$ctrl.changePage($ctrl.filter.skip+1)">
+        <a class="page-link">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="row py-1">
+    <div class="col-12">
+      <span>{{'Showing '+($ctrl.filter.total < $ctrl.pageSize ? $ctrl.filter.total : $ctrl.pageSize) +' of '+$ctrl.booksOrdered.meta.count}}</span>
+      <span ng-if="$ctrl.filter.total != $ctrl.booksOrdered.meta.count">{{' filtered resulting in '+$ctrl.filter.total}}</span>
+      <span> result(s)</span>
+    </div>
+  </div>
+
+  <div class="row py-3" ng-repeat="book in $ctrl.books" ng-class="{ 'bg-white': $index%2==0 }">
+    <div class="col-md-9 col-12">
+      <div class="row">
+        <div class="col-12 py-1">
+          <a href="/#!/books/{{book.slug}}">
+            <span class="h3 text-warning" ng-if="!$ctrl.filter.search">{{$ctrl.filter.skip*$ctrl.pageSize+$index+1+'. '}}</span>
+            <span class="h3 text-warning">{{book.title}}</span>
+          </a>
+          <span>{{'('+book.rating+'/10)'}}</span>
+        </div>
+      </div>
+      <div class="row py-1">
+        <span class="col-12 font-italic text-muted">{{book.author}}</span>
+      </div>
+      <div class="row py-1">
+        <div class="col-12">
+          <span class="synopsis">{{book.synopsis|limitTo:200}}{{book.synopsis.length>200 ? '...':''}}</span>
+        </div>
+      </div>
+      <div class="row py-1">
+        <div class="col-12 d-flex align-items-center">
+          <button ng-if="!book.upvoted" class="btn btn-warning text-white font-weight-bold" ng-click="$ctrl.vote(book)">Upvote</button>
+          <button ng-if="book.upvoted" class="btn bg-white text-warning border-warning font-weight-bold border-1" disabled>Upvoted</button>
+          <span class="ml-3">{{'Upvoted '+book.upvotes+' times'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-12 py-1 d-flex justify-content-center py-1">
+      <a href="/#!/books/{{book.slug}}" class="thumb">
+        <img class="w-12 img-fluid border-rad-75" ng-src="{{book.cover}}" />
+      </a>
+    </div>
+  </div>
+  
+</div>

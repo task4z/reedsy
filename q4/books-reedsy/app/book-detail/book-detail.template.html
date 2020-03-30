@@ -1,0 +1,97 @@
+<div class="container border shadow h-100" ng-if="!$ctrl.error">
+  <div class="container-fluid py-3">
+    <div class="row py-1">
+      <div class="col-md-6 col-12">
+        <span class="h1 text-warning">{{$ctrl.book.title}}</span>
+      </div>
+      <div class="col-md-6 col-12 d-flex align-items-center justify-content-end">
+        <span class="mr-3">{{'Upvoted '+$ctrl.book.upvotes+' times'}}</span>
+        <button ng-if="!$ctrl.book.upvoted" class="btn btn-warning text-white font-weight-bold" ng-click="$ctrl.vote()">Upvote</button>
+        <button ng-if="$ctrl.book.upvoted" class="btn bg-white text-warning border-warning font-weight-bold border-1" disabled>Upvoted</button>
+      </div>
+    </div>
+    <div class="row py-1">
+      <div class="col-12">
+        <span class="font-italic text-muted">{{$ctrl.book.author}}</span>
+      </div>
+    </div>
+    <div class="row py-1">
+      <div class="col-12 d-flex justify-content-center">
+        <img class="img-fluid border-rad-75" ng-src="{{$ctrl.book.cover}}" />
+      </div>
+    </div>
+    <div class="row py-1">
+      <div class="col-12">
+        <span class="h3 font-weight-bold">Synopsis</span>
+      </div>
+    </div>
+    <div class="row py-1" ng-repeat="synopsis in $ctrl.book.synopsis track by $index">
+      <div class="col-12">
+        <span class="pre-wrap">{{synopsis}}</span>
+      </div>
+    </div>
+    <div class="row py-1">
+      <div class="col-12">
+        <span class="font-weight-bold">Rating: {{$ctrl.book.rating+'/10'}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" ng-class="{'card my-3' : $ctrl.comments && $ctrl.comments.length}">
+    <div class="row py-1 border-bottom" ng-if="$ctrl.comments && $ctrl.comments.length">
+      <div class="col-12">
+        <span class="h3">Comments</span>
+      </div>
+    </div>
+    <div ng-repeat="comment in $ctrl.comments track by $index">
+      <div class="row py-1">
+        <div class="col-12">
+          <span><b>{{comment.name}}</b>{{' rated '+comment.rate+' of 10 '}} in {{comment.dateComment | date: 'dd/MM/yyyy'}}</span>
+        </div>
+      </div>
+      <div class="row py-1">
+        <div class="col-12">
+          <span>{{comment.comment}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form class="container-fluid card my-3" ng-submit="$ctrl.addComment()">
+    <div class="row col-12 py-1">
+      <span class="h3">Add a comment</span>
+    </div>
+    <div class="py-1">
+      <input class="col-2 form-control py-1" type="number" placeholder="Rate..." 
+      min="1" max="10" ng-model="$ctrl.comment.rate" aria-describedby="helpBlock">
+      <small id="helpBlock" class="form-text text-muted" ng-class="{'text-danger' : $ctrl.comment.rate < 1 || $ctrl.comment.rate > 10}">
+        Your rating must be beetwen 1 to 10 and numbers only.
+      </small>
+    </div>
+    <div class="row col-12 py-1">
+      <input class="form-control py-1" type="text" placeholder="Name..." ng-model="$ctrl.comment.name">
+    </div>
+    <div class="row col-12 py-1">
+      <input class="form-control py-1" type="text" placeholder="Comment..." ng-model="$ctrl.comment.comment">
+    </div>
+    <div class="row col-12 py-1">
+      <button class="btn btn-warning text-white font-weight-bold"
+      type="submit"
+      ng-if="!($ctrl.comment.rate < 1 || $ctrl.comment.rate > 10 || !$ctrl.comment.rate)">Submit Comment</button>
+      <button class="btn bg-white text-warning border-warning font-weight-bold border-1"
+      ng-if="($ctrl.comment.rate < 1 || $ctrl.comment.rate > 10 || !$ctrl.comment.rate)">Submit Comment</button>
+    </div>
+  </form>
+</div>
+<div class="container border shadow h-100" ng-if="$ctrl.error">
+  <div class="row py-3 text-center">
+    <div class="col-12">
+      <span class="h1 text-warning">
+        {{$ctrl.error.status}} {{$ctrl.error.statusText}}
+      </span>
+    </div>
+  </div>
+  <div class="row py-3 text-center">
+    <div class="col-12">
+      <a href="/#!/books/">Go back to the list Page</a>
+    </div>
+  </div>
+</div>
