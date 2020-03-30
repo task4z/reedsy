@@ -93,7 +93,7 @@ cpx \"node_modules/{angular,angular-*,bootstrap/dist,jquery/dist}/**/*\" app/lib
 karma start karma.conf.js --code-coverage
 ```
 #### Results: 
-![karmaFileCoverage](./images/karmaFileCoverage.png "karmaFileCoverage")
+![karmaFileCoverage](/images/karmaFileCoverage.png "karmaFileCoverage")
 ### To test the SPA e2e
 ```bash 
 npm run protractor 
@@ -107,4 +107,4 @@ webdriver-manager update
 protractor e2e-tests/protractor.conf.js
 ```
 #### Results: 
-![protractorResult](./images/protractorResult.png "protractorResult")
+![protractorResult](/images/protractorResult.png "protractorResult")
