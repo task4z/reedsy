@@ -107,4 +107,4 @@ webdriver-manager update
 protractor e2e-tests/protractor.conf.js
 ```
 #### Results: 
-![protractorResult](/images/protractorResult.png "protractorResult")
+![protractorResult](../images/protractorResult.png "protractorResult")
