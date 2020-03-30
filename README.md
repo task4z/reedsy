@@ -50,9 +50,9 @@ npm install -g sass
 sass app.scss app.css
 ```
 ### Results: 
-![q3-100p](./images/q3-100p.png "q3-100p")
-![q3-50p.png](./images/q3-50p.png "q3-50p.png")
-![q3-small](./images/q3-small.png "q3-small")![q3-small1](./images/q3-small1.png "q3-small1")
+![q3-100p](images/q3-100p.PNG "q3-100p")
+![q3-50p](images/q3-50p.PNG "q3-50p.PNG")
+![q3-small](images/q3-small.PNG "q3-small")![q3-small1](images/q3-small1.PNG "q3-small1")
 
 ## 4. SPA
 ### To start the SPA
@@ -66,10 +66,10 @@ cpx \"node_modules/{angular,angular-*,bootstrap/dist,jquery/dist}/**/*\" app/lib
 http-server ./app -a localhost -p 8000 -c-1
 ```
 #### Results: 
-![spa-list-80](./images/spa-list-80.png "spa-list-80")
-![spa-book-80](./images/spa-book-80.png "spa-book-80")
-![spa-list-small](./images/spa-list-small.png "spa-list-small")![spa-book-small](./images/spa-book-small.png "spa-book-small")
-![404](./images/404.png "404")
+![spa-list-80](images/spa-list-80.PNG "spa-list-80")
+![spa-book-80](images/spa-book-80.PNG "spa-book-80")
+![spa-list-small](images/spa-list-small.PNG "spa-list-small")![spa-book-small](images/spa-book-small.PNG "spa-book-small")
+![404](images/404.PNG "404")
 ### To test the SPA
 ```bash 
 npm test
@@ -81,7 +81,7 @@ cpx \"node_modules/{angular,angular-*,bootstrap/dist,jquery/dist}/**/*\" app/lib
 karma start karma.conf.js
 ```
 #### Results: 
-![karmaResult](./images/karmaResult.png "karmaResult")
+![karmaResult](images/karmaResult.PNG "karmaResult")
 ### To see the test coverage in the SPA
 ```bash 
 npm test --code-coverage
@@ -93,7 +93,7 @@ cpx \"node_modules/{angular,angular-*,bootstrap/dist,jquery/dist}/**/*\" app/lib
 karma start karma.conf.js --code-coverage
 ```
 #### Results: 
-![karmaFileCoverage](/images/karmaFileCoverage.png "karmaFileCoverage")
+![karmaFileCoverage](images/karmaFileCoverage.PNG "karmaFileCoverage")
 ### To test the SPA e2e
 ```bash 
 npm run protractor 
@@ -107,4 +107,4 @@ webdriver-manager update
 protractor e2e-tests/protractor.conf.js
 ```
 #### Results: 
-![protractorResult](../images/protractorResult.png "protractorResult")
+![protractorResult](images/protractorResult.PNG "protractorResult")
